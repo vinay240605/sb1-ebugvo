@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const destinations = [
+  {
+    title: "Hidden Beaches of Thailand",
+    location: "Southeast Asia",
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80",
+    description: "Discover secluded paradise beaches away from tourist crowds.",
+    duration: "7-10 days",
+    bestTime: "November - April"
+  },
+  {
+    title: "Swiss Alps Adventure",
+    location: "Switzerland",
+    image: "https://images.unsplash.com/photo-1531210483974-4f8c1f33fd35?auto=format&fit=crop&q=80",
+    description: "Experience hiking, skiing, and breathtaking mountain views.",
+    duration: "5-7 days",
+    bestTime: "December - March"
+  },
+  {
+    title: "Tuscany Wine Tour",
+    location: "Italy",
+    image: "https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&q=80",
+    description: "Explore vineyards and medieval villages in the Italian countryside.",
+    duration: "4-6 days",
+    bestTime: "May - October"
+  },
+  {
+    title: "Machu Picchu Trek",
+    location: "Peru",
+    image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&q=80",
+    description: "Journey through the ancient Inca Trail to the lost city.",
+    duration: "4-5 days",
+    bestTime: "May - October"
+  }
+];
+
+const travelTips = [
+  {
+    title: "Packing Essentials",
+    icon: "📦",
+    tips: ["Roll clothes to save space", "Pack versatile items", "Bring portable charger"]
+  },
+  {
+    title: "Safety First",
+    icon: "🛡️",
+    tips: ["Get travel insurance", "Keep documents safe", "Share itinerary with family"]
+  },
+  {
+    title: "Budget Smart",
+    icon: "💰",
+    tips: ["Book in advance", "Use local transport", "Cook some meals"]
+  },
+  {
+    title: "Cultural Respect",
+    icon: "🤝",
+    tips: ["Learn basic phrases", "Research customs", "Dress appropriately"]
+  }
+];
+---
+
+<Layout title="Travel">
+  <main class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">Travel Destinations</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Embark on unforgettable journeys to the world's most captivating destinations.</p>
+    </div>
+
+    <section class="mb-20">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Destinations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="aspect-[16/9] overflow-hidden">
+              <img 
+                src={destination.image} 
+                alt={destination.title}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="p-8">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="px-3 py-1 bg-rose-100 text-rose-600 rounded-full text-sm">{destination.location}</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">{destination.title}</h3>
+              <p class="text-gray-600 mb-4">{destination.description}</p>
+              <div class="flex items-center gap-6 text-sm text-gray-500">
+                <span>Duration: {destination.duration}</span>
+                <span>Best Time: {destination.bestTime}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-gray-50 rounded-3xl p-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Travel Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {travelTips.map(tip => (
+          <div class="bg-white p-6 rounded-xl">
+            <div class="text-4xl mb-4">{tip.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">{tip.title}</h3>
+            <ul class="space-y-2">
+              {tip.tips.map(item => (
+                <li class="text-gray-600 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-rose-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

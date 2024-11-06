@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  date: string;
+  href: string;
+}
+
+const { title, excerpt, image, category, date, href } = Astro.props;
+---
+<article class="group cursor-pointer">
+  <div class="aspect-[16/9] overflow-hidden rounded-lg">
+    <img 
+      src={image} 
+      alt={title} 
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+    />
+  </div>
+  <div class="mt-4">
+    <div class="flex items-center gap-2">
+      <span class="px-3 py-1 rounded-full text-sm font-medium bg-rose-100 text-rose-600">
+        {category}
+      </span>
+      <time class="text-sm text-gray-500">{date}</time>
+    </div>
+    <h3 class="mt-2 text-xl font-semibold group-hover:text-rose-600 transition-colors">
+      <a href={href}>{title}</a>
+    </h3>
+    <p class="mt-2 text-gray-600 line-clamp-2">{excerpt}</p>
+  </div>
+</article>

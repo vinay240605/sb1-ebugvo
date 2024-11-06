@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const recipes = [
+  {
+    title: "Mediterranean Quinoa Bowl",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80",
+    category: "Healthy Lunch",
+    prepTime: "20 mins",
+    difficulty: "Easy",
+    description: "A protein-rich bowl featuring quinoa, fresh vegetables, and Mediterranean flavors."
+  },
+  {
+    title: "Japanese Ramen",
+    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80",
+    category: "Asian Cuisine",
+    prepTime: "45 mins",
+    difficulty: "Medium",
+    description: "Authentic Japanese ramen with rich broth, fresh noodles, and traditional toppings."
+  },
+  {
+    title: "Artisanal Sourdough Bread",
+    image: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&q=80",
+    category: "Baking",
+    prepTime: "24 hours",
+    difficulty: "Advanced",
+    description: "Learn the art of making perfect sourdough bread from scratch."
+  }
+];
+
+const cuisines = [
+  {
+    name: "Italian",
+    image: "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?auto=format&fit=crop&q=80",
+    recipes: "45+"
+  },
+  {
+    name: "Asian",
+    image: "https://images.unsplash.com/photo-1617093727343-374698b1c1d8?auto=format&fit=crop&q=80",
+    recipes: "60+"
+  },
+  {
+    name: "Mexican",
+    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&q=80",
+    recipes: "38+"
+  },
+  {
+    name: "Mediterranean",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80",
+    recipes: "52+"
+  }
+];
+---
+
+<Layout title="Food">
+  <main class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">Culinary Adventures</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore delicious recipes, cooking techniques, and food culture from around the world.</p>
+    </div>
+
+    <section class="mb-20">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Recipes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {recipes.map(recipe => (
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="aspect-video overflow-hidden">
+              <img 
+                src={recipe.image} 
+                alt={recipe.title}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="px-3 py-1 bg-rose-100 text-rose-600 rounded-full text-sm">{recipe.category}</span>
+                <span class="text-sm text-gray-500">{recipe.prepTime}</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{recipe.title}</h3>
+              <p class="text-gray-600 mb-4">{recipe.description}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-medium text-gray-500">Difficulty: {recipe.difficulty}</span>
+                <a href="#" class="text-rose-600 hover:text-rose-700">View Recipe →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-gray-50 rounded-3xl p-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Explore Cuisines</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {cuisines.map(cuisine => (
+          <a href="#" class="group">
+            <div class="relative rounded-xl overflow-hidden">
+              <img 
+                src={cuisine.image} 
+                alt={cuisine.name}
+                class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-4 text-white">
+                <h3 class="text-lg font-bold">{cuisine.name}</h3>
+                <p class="text-sm opacity-90">{cuisine.recipes} recipes</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

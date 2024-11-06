@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lifestylePosts = [
+  {
+    title: "Creating a Minimalist Home",
+    image: "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&q=80",
+    category: "Home & Living",
+    excerpt: "Transform your living space with minimalist design principles for a calmer, more organized life.",
+    date: "April 15, 2024"
+  },
+  {
+    title: "Digital Detox Guide",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80",
+    category: "Mental Health",
+    excerpt: "Discover how to maintain a healthy relationship with technology in the digital age.",
+    date: "April 14, 2024"
+  },
+  {
+    title: "Sustainable Fashion Tips",
+    image: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&q=80",
+    category: "Fashion",
+    excerpt: "Learn how to build an eco-friendly wardrobe without compromising on style.",
+    date: "April 13, 2024"
+  },
+  {
+    title: "Morning Routine Mastery",
+    image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&q=80",
+    category: "Productivity",
+    excerpt: "Design a morning routine that sets you up for success and productivity.",
+    date: "April 12, 2024"
+  }
+];
+
+const categories = [
+  {
+    name: "Home & Living",
+    icon: "🏠",
+    count: 45
+  },
+  {
+    name: "Personal Growth",
+    icon: "🌱",
+    count: 38
+  },
+  {
+    name: "Fashion & Style",
+    icon: "👗",
+    count: 52
+  },
+  {
+    name: "Productivity",
+    icon: "⚡",
+    count: 33
+  },
+  {
+    name: "Relationships",
+    icon: "❤️",
+    count: 29
+  },
+  {
+    name: "Career",
+    icon: "💼",
+    count: 41
+  }
+];
+---
+
+<Layout title="Lifestyle">
+  <main class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">Modern Lifestyle</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Discover tips and inspiration for living a balanced, fulfilling life in today's fast-paced world.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+        <div class="space-y-12">
+          {lifestylePosts.map(post => (
+            <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div class="md:flex">
+                <div class="md:w-2/5">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="md:w-3/5 p-8">
+                  <div class="flex items-center gap-2 mb-4">
+                    <span class="px-3 py-1 bg-rose-100 text-rose-600 rounded-full text-sm">{post.category}</span>
+                    <time class="text-sm text-gray-500">{post.date}</time>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-4">{post.title}</h3>
+                  <p class="text-gray-600 mb-6">{post.excerpt}</p>
+                  <a href="#" class="text-rose-600 hover:text-rose-700 font-medium">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="lg:col-span-1">
+        <div class="bg-gray-50 rounded-2xl p-8 sticky top-24">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Categories</h2>
+          <div class="space-y-4">
+            {categories.map(category => (
+              <a href="#" class="flex items-center justify-between p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">{category.icon}</span>
+                  <span class="font-medium text-gray-900">{category.name}</span>
+                </div>
+                <span class="text-sm text-gray-500">{category.count} articles</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

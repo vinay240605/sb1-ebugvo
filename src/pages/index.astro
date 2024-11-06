@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+const featuredPosts = [
+  {
+    title: "10 Morning Habits That Will Transform Your Day",
+    excerpt: "Discover the power of a well-structured morning routine and how it can set you up for success.",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80",
+    category: "Wellness",
+    date: "April 15, 2024",
+    href: "/wellness/morning-habits"
+  },
+  {
+    title: "Hidden Gems: Secret Travel Destinations for 2024",
+    excerpt: "Explore these off-the-beaten-path destinations that promise unique experiences and unforgettable memories.",
+    image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&q=80",
+    category: "Travel",
+    date: "April 12, 2024",
+    href: "/travel/hidden-gems"
+  },
+  {
+    title: "Mindful Living: Creating Balance in a Busy World",
+    excerpt: "Learn practical strategies to incorporate mindfulness into your daily routine and find inner peace.",
+    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&q=80",
+    category: "Lifestyle",
+    date: "April 10, 2024",
+    href: "/lifestyle/mindful-living"
+  }
+];
+
+const popularDestinations = [
+  {
+    name: "Bali, Indonesia",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80",
+    description: "Tropical paradise with rich culture and stunning beaches"
+  },
+  {
+    name: "Santorini, Greece",
+    image: "https://images.unsplash.com/photo-1570077188670-6e65c2d60404?auto=format&fit=crop&q=80",
+    description: "Iconic white buildings and breathtaking sunsets"
+  },
+  {
+    name: "Kyoto, Japan",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80",
+    description: "Ancient temples and traditional Japanese culture"
+  }
+];
+---
+
+<Layout title="Welcome">
+  <main>
+    <!-- Hero Section with Video Background -->
+    <section class="relative h-[80vh] overflow-hidden">
+      <video 
+        class="absolute w-full h-full object-cover"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative h-full max-w-6xl mx-auto px-4 flex items-center">
+        <div class="text-white max-w-3xl">
+          <h1 class="text-6xl font-bold mb-6">Discover Your Perfect Journey</h1>
+          <p class="text-xl mb-8">Explore curated travel experiences, wellness tips, and lifestyle inspiration for the modern adventurer.</p>
+          <div class="flex gap-4">
+            <a href="/travel" class="bg-rose-600 hover:bg-rose-700 text-white px-8 py-3 rounded-lg transition-colors">
+              Explore Destinations
+            </a>
+            <a href="/about" class="bg-white hover:bg-gray-100 text-gray-900 px-8 py-3 rounded-lg transition-colors">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section class="max-w-6xl mx-auto px-4 py-20">
+      <h2 class="text-4xl font-bold text-gray-900 mb-2">Featured Stories</h2>
+      <p class="text-xl text-gray-600 mb-12">Handpicked articles to inspire your next adventure</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredPosts.map(post => (
+          <FeaturedPost {...post} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="bg-gray-50 py-20">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-gray-900 mb-2">Popular Destinations</h2>
+        <p class="text-xl text-gray-600 mb-12">Discover the most sought-after locations around the world</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {popularDestinations.map(destination => (
+            <div class="group cursor-pointer">
+              <div class="aspect-[4/3] rounded-lg overflow-hidden">
+                <img 
+                  src={destination.image}
+                  alt={destination.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <h3 class="mt-4 text-2xl font-semibold text-gray-900">{destination.name}</h3>
+              <p class="mt-2 text-gray-600">{destination.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <Newsletter />
+  </main>
+</Layout>
